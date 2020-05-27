@@ -4,10 +4,16 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 
-public class EditorSnap : MonoBehaviour
+public class CubeEditor : MonoBehaviour
 {
-
     [SerializeField] [Range(1f, 20f)] float gridSize = 10f;
+
+    TextMesh textMesh;
+
+    private void Start()
+    {
+
+    }
 
     void Update()
     {
@@ -15,8 +21,11 @@ public class EditorSnap : MonoBehaviour
 
         snapPos.x = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize;
         snapPos.z = Mathf.RoundToInt(transform.position.z / gridSize) * gridSize;
-
         transform.position = new Vector3(snapPos.x, 0f, snapPos.z);
 
+        textMesh = GetComponentInChildren<TextMesh>();
+        string labelText = snapPos.x / 10 + "," + snapPos.z / 10;
+        textMesh.text = labelText;
+        gameObject.name = labelText;
     }
 }
