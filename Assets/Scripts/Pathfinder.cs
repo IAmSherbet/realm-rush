@@ -9,6 +9,10 @@ public class Pathfinder : MonoBehaviour
 
     [SerializeField] Waypoint startWaypoint, endWaypoint;
 
+    Queue<Waypoint> queue = new Queue<Waypoint>();
+
+    bool isRunning = true;
+
     Vector2Int[] directions =
     {
         Vector2Int.up, // shorthand for Vector2Int(0,1)
@@ -22,22 +26,70 @@ public class Pathfinder : MonoBehaviour
         LoadBlocks();
         startWaypoint.SetTopColor(Color.green);
         endWaypoint.SetTopColor(Color.black);
-        ExploreNeighbours();
+        Pathfind();
+        //ExploreNeighbours();
     }
 
-    private void ExploreNeighbours()
+    private void Pathfind()
     {
+        queue.Enqueue(startWaypoint);
+
+        while (queue.Count > 0 && isRunning)
+        {
+            var searchCenter = queue.Dequeue(); // returns the front of the queue
+            searchCenter.isExplored = true;
+            searchCenter.isQueued = false;
+            print("Searching from " + searchCenter); //todo: remove
+            StopIfEndFound(searchCenter);
+            ExploreNeighbours(searchCenter);
+        }
+
+        print("Finished pathfinding?");
+    }
+
+    private void StopIfEndFound(Waypoint searchCenter)
+    {
+        if (searchCenter == endWaypoint)
+        {
+            print("Searching from end node, therefore stopping"); // todo: remove
+            isRunning = false;
+        }
+    }
+
+    private void ExploreNeighbours(Waypoint currentPosition)
+    {
+        if (!isRunning) { return; }
+
         foreach (Vector2Int direction in directions)
         {
-            Vector2Int neighbourPos = direction + startWaypoint.GetGridPos();
-            try
-            {
-                grid[neighbourPos].SetTopColor(Color.blue);
-            }
-            catch
-            {
+            Vector2Int neighbourVector2Int = currentPosition.GetGridPos() + direction;
 
-            }
+            try { QueueNewNeighbour(neighbourVector2Int); }
+            catch { }
+        }
+    }
+
+    private void QueueNewNeighbour(Vector2Int neighbourVector2Int)
+    {
+        Waypoint neighbourWaypoint = grid[neighbourVector2Int];
+
+        if (neighbourWaypoint.isExplored)
+        {
+            // do nothing. question: why not return; ?   
+        }
+        else if (neighbourWaypoint.isQueued)
+        {
+            // do nothing.
+        }
+        else
+        {
+            neighbourWaypoint.SetTopColor(Color.blue);
+
+            queue.Enqueue(neighbourWaypoint);
+
+            neighbourWaypoint.isQueued = true;
+
+            print("Queueing " + neighbourWaypoint);
         }
     }
 
