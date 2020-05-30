@@ -6,8 +6,6 @@ public class Waypoint : MonoBehaviour
 {
     public bool isExplored = false; // OK to have a public bool because waypoint is a data class
 
-    public bool isQueued = false;
-
     const int gridSize = 10;
 
     public int GetGridSize()

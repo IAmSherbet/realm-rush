@@ -38,7 +38,6 @@ public class Pathfinder : MonoBehaviour
         {
             var searchCenter = queue.Dequeue(); // returns the front of the queue
             searchCenter.isExplored = true;
-            searchCenter.isQueued = false;
             print("Searching from " + searchCenter); //todo: remove
             StopIfEndFound(searchCenter);
             ExploreNeighbours(searchCenter);
@@ -73,21 +72,15 @@ public class Pathfinder : MonoBehaviour
     {
         Waypoint neighbourWaypoint = grid[neighbourVector2Int];
 
-        if (neighbourWaypoint.isExplored)
+        if (neighbourWaypoint.isExplored || queue.Contains(neighbourWaypoint))
         {
             // do nothing. question: why not return; ?   
-        }
-        else if (neighbourWaypoint.isQueued)
-        {
-            // do nothing.
         }
         else
         {
             neighbourWaypoint.SetTopColor(Color.blue);
 
             queue.Enqueue(neighbourWaypoint);
-
-            neighbourWaypoint.isQueued = true;
 
             print("Queueing " + neighbourWaypoint);
         }
