@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class Pathfinder : MonoBehaviour
 {
-    Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
-
     [SerializeField] Waypoint startWaypoint, endWaypoint;
 
+    Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
     Queue<Waypoint> queue = new Queue<Waypoint>();
-
     bool isRunning = true;
-
     Waypoint searchCenter;
+    List<Waypoint> path = new List<Waypoint>();
 
     Vector2Int[] directions =
     {
@@ -23,15 +21,39 @@ public class Pathfinder : MonoBehaviour
         Vector2Int.left
     };
 
-    void Start()
+    public List<Waypoint> GetPath()
     {
         LoadBlocks();
-        startWaypoint.SetTopColor(Color.green);
-        endWaypoint.SetTopColor(Color.black);
-        Pathfind();
+        ColorStartAndEnd();
+        BreadthFirstSearch();
+        CreatePath();
+        return path;
     }
 
-    private void Pathfind()
+    private void ColorStartAndEnd()
+    {
+        startWaypoint.SetTopColor(Color.green); //todo: consider moving to Waypoint.cs
+        endWaypoint.SetTopColor(Color.black);
+    }
+
+    private void CreatePath()
+    {
+        path.Add(endWaypoint);
+
+        Waypoint previous = endWaypoint.exploredFrom;
+
+        while (previous != startWaypoint)
+        {
+            //loop through intermediate waypoints
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+
+        path.Add(startWaypoint);
+        path.Reverse();
+    }
+
+    private void BreadthFirstSearch()
     {
         queue.Enqueue(startWaypoint);
 
@@ -64,8 +86,10 @@ public class Pathfinder : MonoBehaviour
         {
             Vector2Int neighbourVector2Int = searchCenter.GetGridPos() + direction;
 
-            try { QueueNewNeighbour(neighbourVector2Int); }
-            catch { }
+            if (grid.ContainsKey(neighbourVector2Int))
+            {
+                QueueNewNeighbour(neighbourVector2Int);
+            }
         }
     }
 
