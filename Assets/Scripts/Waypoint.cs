@@ -6,7 +6,15 @@ public class Waypoint : MonoBehaviour
 {
     public bool isExplored = false; // OK to have a public bool because waypoint is a data class
 
+    public Waypoint exploredFrom;
+
     const int gridSize = 10;
+
+    private void Update()
+    {
+        if (isExplored) { SetTopColor(Color.blue); }
+    }
+
 
     public int GetGridSize()
     {
@@ -24,6 +32,12 @@ public class Waypoint : MonoBehaviour
     public void SetTopColor(Color color)
     {
         MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
-        topMeshRenderer.material.color = color;
+        if (topMeshRenderer.material.color == Color.green || topMeshRenderer.material.color == Color.black)
+        {
+            // todo: replace this with something more fail-proof
+        } else
+        {
+            topMeshRenderer.material.color = color;
+        }
     }
 }

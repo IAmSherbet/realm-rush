@@ -13,6 +13,8 @@ public class Pathfinder : MonoBehaviour
 
     bool isRunning = true;
 
+    Waypoint searchCenter;
+
     Vector2Int[] directions =
     {
         Vector2Int.up, // shorthand for Vector2Int(0,1)
@@ -27,7 +29,6 @@ public class Pathfinder : MonoBehaviour
         startWaypoint.SetTopColor(Color.green);
         endWaypoint.SetTopColor(Color.black);
         Pathfind();
-        //ExploreNeighbours();
     }
 
     private void Pathfind()
@@ -36,17 +37,17 @@ public class Pathfinder : MonoBehaviour
 
         while (queue.Count > 0 && isRunning)
         {
-            var searchCenter = queue.Dequeue(); // returns the front of the queue
+            searchCenter = queue.Dequeue(); // returns the front of the queue
             searchCenter.isExplored = true;
             print("Searching from " + searchCenter); //todo: remove
-            StopIfEndFound(searchCenter);
-            ExploreNeighbours(searchCenter);
+            StopIfEndFound();
+            ExploreNeighbours();
         }
 
         print("Finished pathfinding?");
     }
 
-    private void StopIfEndFound(Waypoint searchCenter)
+    private void StopIfEndFound()
     {
         if (searchCenter == endWaypoint)
         {
@@ -55,13 +56,13 @@ public class Pathfinder : MonoBehaviour
         }
     }
 
-    private void ExploreNeighbours(Waypoint currentPosition)
+    private void ExploreNeighbours()
     {
         if (!isRunning) { return; }
 
         foreach (Vector2Int direction in directions)
         {
-            Vector2Int neighbourVector2Int = currentPosition.GetGridPos() + direction;
+            Vector2Int neighbourVector2Int = searchCenter.GetGridPos() + direction;
 
             try { QueueNewNeighbour(neighbourVector2Int); }
             catch { }
@@ -78,11 +79,11 @@ public class Pathfinder : MonoBehaviour
         }
         else
         {
-            neighbourWaypoint.SetTopColor(Color.blue);
-
             queue.Enqueue(neighbourWaypoint);
 
             print("Queueing " + neighbourWaypoint);
+
+            neighbourWaypoint.exploredFrom = searchCenter;
         }
     }
 
