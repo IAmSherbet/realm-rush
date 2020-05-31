@@ -15,7 +15,6 @@ public class Waypoint : MonoBehaviour
         if (isExplored) { SetTopColor(Color.blue); }
     }
 
-
     public int GetGridSize()
     {
         return gridSize;
