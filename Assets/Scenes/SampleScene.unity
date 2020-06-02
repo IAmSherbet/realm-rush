@@ -6901,11 +6901,6 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 1979706579}
-    - target: {fileID: 860008252, guid: dbd892a7dbb9b4624886cdcf9632ba3c, type: 3}
-      propertyPath: deathFX
-      value: 
-      objectReference: {fileID: 4355561183028808181, guid: 7886c8075752b4c599981b16e26d8f32,
-        type: 3}
     - target: {fileID: 3187015131506456436, guid: dbd892a7dbb9b4624886cdcf9632ba3c,
         type: 3}
       propertyPath: m_Name

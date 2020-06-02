@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &1103320038
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2348707235763225171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.048650585, y: 0.01593672, z: 0.05774367}
+  m_Center: {x: -0.0002720449, y: 0.009917219, z: -0.011262099}
 --- !u!1 &3187015131506456436
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,8 +23,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3187015131506456438}
   - component: {fileID: 3187015131506456437}
-  - component: {fileID: 860008253}
   - component: {fileID: 860008252}
+  - component: {fileID: 1049875814}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -46,19 +59,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1538a86583fd44009155e0daf06b724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &860008253
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3187015131506456436}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &860008252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,9 +71,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d9b91827e9f4a3aa9bf93df776ba53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathFX: {fileID: 0}
+  deathFX: {fileID: 4355561183028808181, guid: 7886c8075752b4c599981b16e26d8f32, type: 3}
   parent: {fileID: 0}
   hits: 6
+--- !u!54 &1049875814
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3187015131506456436}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &3187015131465793880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,11 +172,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: HoverTank_Base
       objectReference: {fileID: 0}
+    - target: {fileID: 6569547089815824894, guid: 53a5567c4042d490bb80bd6258f91ab8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569547089815824894, guid: 53a5567c4042d490bb80bd6258f91ab8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53a5567c4042d490bb80bd6258f91ab8, type: 3}
 --- !u!4 &3905590037640381066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1876307874738357202, guid: 53a5567c4042d490bb80bd6258f91ab8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3187015131465793880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2348707235763225171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 910507404622217995, guid: 53a5567c4042d490bb80bd6258f91ab8,
     type: 3}
   m_PrefabInstance: {fileID: 3187015131465793880}
   m_PrefabAsset: {fileID: 0}
