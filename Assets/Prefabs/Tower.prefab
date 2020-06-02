@@ -54,6 +54,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5368462419008504966}
     m_Modifications:
+    - target: {fileID: 1301823572248552617, guid: fef642e1072624721a7b24c57e808b62,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301823572248552617, guid: fef642e1072624721a7b24c57e808b62,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301823572248552617, guid: fef642e1072624721a7b24c57e808b62,
+        type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301823572248552617, guid: fef642e1072624721a7b24c57e808b62,
+        type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720239075463673585, guid: fef642e1072624721a7b24c57e808b62,
+        type: 3}
+      propertyPath: m_Name
+      value: Machine gun particle
+      objectReference: {fileID: 0}
     - target: {fileID: 4843667630835137200, guid: fef642e1072624721a7b24c57e808b62,
         type: 3}
       propertyPath: m_Name
