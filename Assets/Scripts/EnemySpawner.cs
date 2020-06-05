@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] enemiesToSpawn;
     [SerializeField] Transform parentObject;
-    [SerializeField] float secondsBetweenSpawns = 4f;
+    [Range(1f, 10f)][SerializeField] float secondsBetweenSpawns = 4f;
  
     void Start()
     {
