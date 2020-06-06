@@ -6,8 +6,15 @@ using UnityEngine;
 public class EnemyHits : MonoBehaviour
 {
     [SerializeField] GameObject deathFX;
+    [SerializeField] ParticleSystem hitFX;
     [SerializeField] Transform parent;
     [SerializeField] int hits = 12;
+    Vector3 hitSpawnPosition;
+
+    private void Update()
+    {
+        hitSpawnPosition = transform.position + new Vector3(0, 4, 0);
+    }
 
     private void OnParticleCollision(GameObject other) //(GameObject other) is a Unity default, dw about it
     {
@@ -20,8 +27,8 @@ public class EnemyHits : MonoBehaviour
 
     private void ProcessHit()
     {
-        //consider adding hit FX
         hits = hits - 1;
+        Instantiate(hitFX, hitSpawnPosition, Quaternion.identity); //todo: provide parent to store in hierarchy during runtime
     }
 
     private void KillEnemy()

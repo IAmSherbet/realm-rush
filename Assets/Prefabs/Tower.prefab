@@ -74,6 +74,11 @@ PrefabInstance:
       propertyPath: CollisionModule.collisionMessages
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1301823572248552617, guid: fef642e1072624721a7b24c57e808b62,
+        type: 3}
+      propertyPath: CollisionModule.minKillSpeed
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4720239075463673585, guid: fef642e1072624721a7b24c57e808b62,
         type: 3}
       propertyPath: m_Name
