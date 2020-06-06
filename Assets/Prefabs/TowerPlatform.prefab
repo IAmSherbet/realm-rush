@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1889273319932845233}
+  - component: {fileID: 686599438293012967}
+  - component: {fileID: 1865958384975991812}
   m_Layer: 0
   m_Name: TowerPlatform
   m_TagString: Untagged
@@ -31,6 +33,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &686599438293012967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601089109869770654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117f00994643d4d7d8ed135e025bdbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 1516925240443517647, guid: 597623203a6c34ee8a99080ffe215552, type: 3}
+  parentObject: {fileID: 0}
+--- !u!65 &1865958384975991812
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601089109869770654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: -0.05, z: 0}
 --- !u!1 &5325393549974954962
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +71,6 @@ GameObject:
   - component: {fileID: 2984533296620907888}
   - component: {fileID: 13841527419316332}
   - component: {fileID: 5541727970857421178}
-  - component: {fileID: 6995119211933027034}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -111,17 +139,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &6995119211933027034
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5325393549974954962}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

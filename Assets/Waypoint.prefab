@@ -178,7 +178,6 @@ GameObject:
   - component: {fileID: 3873175874459669651}
   - component: {fileID: 3873175874459669648}
   - component: {fileID: 3873175874459669649}
-  - component: {fileID: 3873175874459669650}
   m_Layer: 0
   m_Name: Top
   m_TagString: Untagged
@@ -248,20 +247,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3873175874459669650
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3873175874459669644}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1115197640155537083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -344,7 +329,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9200122468254549173, guid: 18a64ea2e313141ad85b682d923e7ee3, type: 3}
+    - {fileID: 2412916078326498068, guid: 18a64ea2e313141ad85b682d923e7ee3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 18a64ea2e313141ad85b682d923e7ee3, type: 3}
 --- !u!4 &8130295832803387399 stripped
 Transform:
