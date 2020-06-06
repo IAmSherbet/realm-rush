@@ -4,20 +4,7 @@ using UnityEngine;
 
 public class TowerPlatform : MonoBehaviour
 {
-    [SerializeField] Tower tower;
-    bool isPlaceable = true;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool isPlaceable = true;
 
     private void OnMouseOver()
     {
@@ -25,9 +12,7 @@ public class TowerPlatform : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                print("Clicked " + gameObject.name);
-                Instantiate(tower, transform.position, Quaternion.identity);
-                isPlaceable = false;
+                FindObjectOfType<TowerFactory>().AddTower(this);
             }
         } else
         {

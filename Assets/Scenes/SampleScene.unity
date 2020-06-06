@@ -1358,6 +1358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 478737684}
   - component: {fileID: 478737685}
+  - component: {fileID: 478737686}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -1445,6 +1446,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWaypoint: {fileID: 1362407984}
   endWaypoint: {fileID: 1312529386}
+--- !u!114 &478737686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478737683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14a9706d8a61d467db5891b5818d7a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 1516925240443517647, guid: 597623203a6c34ee8a99080ffe215552, type: 3}
+  towerLimit: 5
 --- !u!1001 &566439049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2447,7 +2462,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -4913,7 +4928,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684310072}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
