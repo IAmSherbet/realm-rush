@@ -70,7 +70,6 @@ public class Pathfinder : MonoBehaviour
         {
             searchCenter = queue.Dequeue(); // returns the front of the queue
             searchCenter.isExplored = true;
-            print("Searching from " + searchCenter); //todo: remove
             StopIfEndFound();
             ExploreNeighbours();
         }
@@ -80,7 +79,6 @@ public class Pathfinder : MonoBehaviour
     {
         if (searchCenter == endWaypoint)
         {
-            print("Searching from end node, therefore stopping"); // todo: remove
             isRunning = false;
         }
     }
@@ -111,8 +109,6 @@ public class Pathfinder : MonoBehaviour
         else
         {
             queue.Enqueue(neighbourWaypoint);
-
-            print("Queueing " + neighbourWaypoint);
 
             neighbourWaypoint.exploredFrom = searchCenter;
         }

@@ -39,4 +39,9 @@ public class Waypoint : MonoBehaviour
             topMeshRenderer.material.color = color;
         }
     }
+
+    private void OnMouseOver()
+    {
+        print(gameObject.name);
+    }
 }
