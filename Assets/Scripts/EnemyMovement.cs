@@ -28,6 +28,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void SelfDestruct()
     {
+        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+        playerHealth.ReduceHealth();
+
         Instantiate(selfDestructFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
