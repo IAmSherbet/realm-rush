@@ -6,9 +6,13 @@ public class PlayerHealth : MonoBehaviour
 {
     public int playerHealth = 10;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        ReduceHealth();
+    }
+
     public void ReduceHealth()
     {
         playerHealth = playerHealth - 1;
-        print(playerHealth);
     }
 }
