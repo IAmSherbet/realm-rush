@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour
     //parameters (can be custom) of each tower
     [SerializeField] Transform objectToPan;
     [SerializeField] GameObject gun;
+    public TowerPlatform builtOnPlatform;
     float attackRange = 30f;
 
     //state

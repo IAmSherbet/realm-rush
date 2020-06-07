@@ -5,31 +5,48 @@ using UnityEngine;
 public class TowerFactory : MonoBehaviour
 {
     [SerializeField] Tower tower;
-    [SerializeField] int towerLimit = 5;
+
+    Queue<Tower> towers = new Queue<Tower>();
 
     public void AddTower(TowerPlatform towerPlatform)
     {
-        var sceneTowers = FindObjectsOfType<Tower>();
 
-        if (sceneTowers.Length < 5)
+        if (towers.Count < 2)
         {
             InstantiateNewTower(towerPlatform);
+            print(towers.Count + " tower(s) in scene");
         }
         else
         {
-            MoveExistingTower();
+            MoveExistingTower(towerPlatform);
         }
-    }
-
-    private static void MoveExistingTower()
-    {
-        //todo: move first tower placed upon reaching limit
-        print("Tower limit reached");
     }
 
     private void InstantiateNewTower(TowerPlatform towerPlatform)
     {
-        Instantiate(tower, towerPlatform.transform.position, Quaternion.identity);
-        towerPlatform.isPlaceable = false;
+        Tower placedTower = Instantiate(tower, towerPlatform.transform.position, Quaternion.identity);
+        placedTower.builtOnPlatform = towerPlatform;
+
+        towerPlatform.TogglePlaceable();
+
+        towers.Enqueue(placedTower);
+    }
+
+    private void MoveExistingTower(TowerPlatform newPlatform)
+    {
+        // take the bottom tower off the queue
+        Tower towerBeingMoved = towers.Dequeue();
+        // set old platform as placeable
+        towerBeingMoved.builtOnPlatform.TogglePlaceable();
+
+        // set the new platform position
+        towerBeingMoved.transform.position = newPlatform.transform.position;
+        // set tower's new platform 
+        towerBeingMoved.builtOnPlatform = newPlatform;
+        // set new platform as not placeable
+        newPlatform.TogglePlaceable();
+
+        // add the tower on top of the queue
+        towers.Enqueue(towerBeingMoved);
     }
 }

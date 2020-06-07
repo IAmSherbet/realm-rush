@@ -20,4 +20,9 @@ public class TowerPlatform : MonoBehaviour
             print("Tower already placed here");
         }
     }
+
+    public void TogglePlaceable()
+    {
+        isPlaceable = !isPlaceable;
+    }
 }
