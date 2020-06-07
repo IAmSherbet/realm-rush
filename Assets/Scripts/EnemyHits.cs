@@ -28,12 +28,13 @@ public class EnemyHits : MonoBehaviour
     private void ProcessHit()
     {
         hits = hits - 1;
-        Instantiate(hitFX, hitSpawnPosition, Quaternion.identity); //todo: provide parent to store in hierarchy during runtime
+        Instantiate(hitFX, hitSpawnPosition, Quaternion.identity, parent); //todo: provide parent to store in hierarchy during runtime
     }
 
     private void KillEnemy()
     {
-        Instantiate(deathFX, transform.position, Quaternion.identity, parent);
+        Instantiate(deathFX, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 }

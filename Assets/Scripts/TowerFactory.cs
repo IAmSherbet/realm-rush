@@ -5,13 +5,15 @@ using UnityEngine;
 public class TowerFactory : MonoBehaviour
 {
     [SerializeField] Tower tower;
+    [SerializeField] int towerLimit = 5;
+    [SerializeField] Transform parent;
 
     Queue<Tower> towers = new Queue<Tower>();
 
     public void AddTower(TowerPlatform towerPlatform)
     {
 
-        if (towers.Count < 2)
+        if (towers.Count < towerLimit)
         {
             InstantiateNewTower(towerPlatform);
             print(towers.Count + " tower(s) in scene");
@@ -24,7 +26,7 @@ public class TowerFactory : MonoBehaviour
 
     private void InstantiateNewTower(TowerPlatform towerPlatform)
     {
-        Tower placedTower = Instantiate(tower, towerPlatform.transform.position, Quaternion.identity);
+        Tower placedTower = Instantiate(tower, towerPlatform.transform.position, Quaternion.identity, parent);
         placedTower.builtOnPlatform = towerPlatform;
 
         towerPlatform.TogglePlaceable();
