@@ -9,6 +9,7 @@ public class EnemyHits : MonoBehaviour
     [SerializeField] ParticleSystem hitFX;
     [SerializeField] Transform parent;
     [SerializeField] int hits = 12;
+    [SerializeField] int value = 100;
     Vector3 hitSpawnPosition;
 
     private void Update()
@@ -22,7 +23,14 @@ public class EnemyHits : MonoBehaviour
         if (hits <= 0)
         {
             KillEnemy();
+            IncreaseScore();
         }
+    }
+
+    private void IncreaseScore()
+    {
+       PlayerScore playerScore = FindObjectOfType<PlayerScore>();
+       playerScore.IncreaseScore(value);
     }
 
     private void ProcessHit()
