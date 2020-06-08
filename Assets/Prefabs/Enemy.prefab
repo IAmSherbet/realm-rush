@@ -82,6 +82,7 @@ MonoBehaviour:
   hits: 12
   value: 100
   hitSFX: {fileID: 8300000, guid: d440c9f7407a04474bf738520785306b, type: 3}
+  deathSFX: {fileID: 8300000, guid: f0f4d264bc72b4d0a8832cff5dd5a1de, type: 3}
 --- !u!54 &1049875814
 Rigidbody:
   m_ObjectHideFlags: 0
