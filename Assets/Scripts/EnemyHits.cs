@@ -10,6 +10,7 @@ public class EnemyHits : MonoBehaviour
     [SerializeField] Transform parent;
     [SerializeField] int hits = 12;
     [SerializeField] int value = 100;
+    [SerializeField] AudioClip hitSFX;
     Vector3 hitSpawnPosition;
 
     private void Update()
@@ -37,6 +38,7 @@ public class EnemyHits : MonoBehaviour
     {
         hits = hits - 1;
         Instantiate(hitFX, hitSpawnPosition, Quaternion.identity, parent); //todo: provide parent to store in hierarchy during runtime
+        GetComponent<AudioSource>().PlayOneShot(hitSFX);
     }
 
     private void KillEnemy()
